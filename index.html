@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--Utilizar o Bootstrap-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <!--Utilizar CSS externo-->
+  <link rel="stylesheet" href="style.css">
+  <title>CPF Invest</title>
+
+  <script>
+
+    //Aguarda até que a página seja renderizada
+    window.onload = function () {
+      atualizaTotalEnt()
+      atualizaTotalSai()
+      atualizaStatus()
+      atualizarResumo()
+      atualizaTotResumo()
+      document.querySelector("#btnLancarEnt").addEventListener("click", lancarEntrada);
+      document.querySelector("#btnLancarSai").addEventListener("click", lancarSaida);
+    }
+
+    //Funcao que lança a entrada no histórico
+    function lancarEntrada() {
+      var inputs = document.querySelector("#instFinancEnt")
+      //tratamento de campos vazios
+      if (inputs.value == '') {
+        alert("Por favor, preencha todos os campos!")
+        return
+      }
+      var inputs = document.querySelector("#dataEnt")
+      //tratamento de campos vazios
+      if (inputs.value == '') {
+        alert("Por favor, preencha todos os campos!")
+        return
+      }
+      var inputs = document.querySelector("#valorEnt")
+      //tratamento de campos vazios
+      if (inputs.value == '') {
+        alert("Por favor, preencha todos os campos!")
+        return
+      }
+      var inputs = document.querySelector("#descEnt")
+      //tratamento de campos vazios
+      if (inputs.value == '') {
+        alert("Por favor, preencha todos os campos!")
+        return
+      }
+
+      //Manipulação DOM
+      var novoTR = document.createElement("tr") //cria o elemento tr
+      novoTR.setAttribute("id", "linhaEnt") //coloca o id
+      var instTD = document.createElement("td") //cria o elemento td
+      instTD.setAttribute("style", "text-align: left") //coloca o style
+      instTD.setAttribute("id", "instEnt") //coloca o style
+      var dataTD = document.createElement("td") //cria o elemento td
+      var valorTD = document.createElement("td") //cria o elemento td
+      valorTD.setAttribute("id", "vlrEnt") //coloca o id
+      var descTD = document.createElement("td") //cria o elemento td
+      novoTR.append(instTD) //coloca o td dentro de tr
+      novoTR.append(dataTD) //coloca o td dentro de tr
+      novoTR.append(valorTD) //coloca o td dentro de tr
+      novoTR.append(descTD) //coloca o td dentro de tr
+      var instituicao = document.querySelector("#instFinancEnt").value
+      //troca o retorno numerico do select pela string correspondente
+      switch (instituicao) {
+        case '1': instituicao = "Banco do Brasil"
+          break;
+        case '2': instituicao = "Santander"
+          break;
+        case '3': instituicao = "Nubank"
+          break;
+        case '4': instituicao = "PicPay"
+          break;
+        case '5': instituicao = "Dinheiro"
+          break;
+      }
+      var data = document.querySelector("#dataEnt").value
+      var valor = document.querySelector("#valorEnt").value
+      var descricao = document.querySelector("#descEnt").value
+      instTD.append(instituicao)
+      dataTD.append(data)
+      valorTD.append(valor)
+      descTD.append(descricao)
+
+      var qte = document.querySelectorAll("#linhaEnt").length //encontrar numero de itens
+      var local = document.querySelector("#tabelaEntradas")
+      local.insertBefore(novoTR, local.childNodes[qte + 3])
+
+      //limpar selecao
+      document.querySelector("#instFinancEnt").value = ""
+      document.querySelector("#dataEnt").value = ""
+      document.querySelector("#valorEnt").value = ""
+      document.querySelector("#descEnt").value = ""
+
+      //Atualizar total
+      atualizaTotalEnt()
+
+      //atualiza resumo
+      atualizarResumo()
+
+      //atualiza o total do resumo
+      atualizaTotResumo()
+    }
+
+    //Funcao que lança a saída no histórico
+    function lancarSaida() {
+      var inputs = document.querySelector("#instFinancSai")
+      //tratamento de campos vazios
+      if (inputs.value == '') {
+        alert("Por favor, preencha todos os campos!")
+        return
+      }
+      var inputs = document.querySelector("#dataTransSai")
+      //tratamento de campos vazios
+      if (inputs.value == '') {
+        alert("Por favor, preencha todos os campos!")
+        return
+      }
+      var inputs = document.querySelector("#dataFatSai")
+      //tratamento de campos vazios
+      if (inputs.value == '') {
+        alert("Por favor, preencha todos os campos!")
+        return
+      }
+      var inputs = document.querySelector("#valorSai")
+      //tratamento de campos vazios
+      if (inputs.value == '') {
+        alert("Por favor, preencha todos os campos!")
+        return
+      }
+      var inputs = document.querySelector("#descSai")
+      //tratamento de campos vazios
+      if (inputs.value == '') {
+        alert("Por favor, preencha todos os campos!")
+        return
+      }
+      var inputs = document.querySelector("#nSai")
+      //tratamento de campos vazios
+      if (inputs.value == '') {
+        alert("Por favor, preencha todos os campos!")
+        return
+      }
+
+      //verificar quantidade de vezes
+      var vezes = document.querySelector("#nSai").value
+
+      for (var i = 0; i < vezes; i++) {
+
+        //Manipulação DOM
+        var novoTR = document.createElement("tr") //cria o elemento tr
+        novoTR.setAttribute("id", "linhaSai") //coloca o id
+        var instTD = document.createElement("td") //cria o elemento td
+        instTD.setAttribute("style", "text-align: left") //coloca o style
+        instTD.setAttribute("id", "instSai") //coloca o id
+        var dataTransTD = document.createElement("td") //cria o elemento td
+        var dataFatTD = document.createElement("td") //cria o elemento td
+        dataFatTD.setAttribute("id", "fatura") //coloca o id
+        var valorTD = document.createElement("td") //cria o elemento td
+        valorTD.setAttribute("id", "vlrSai") //coloca o id
+        var descTD = document.createElement("td") //cria o elemento td
+        var statusTD = document.createElement("td") //cria o elemento td
+        statusTD.setAttribute("id", "status")
+        novoTR.append(instTD) //coloca o td dentro de tr
+        novoTR.append(dataTransTD) //coloca o td dentro de tr
+        novoTR.append(dataFatTD) //coloca o td dentro de tr
+        novoTR.append(valorTD) //coloca o td dentro de tr
+        novoTR.append(descTD) //coloca o td dentro de tr
+        novoTR.append(statusTD) //coloca o td dentro de tr
+        var instituicao = document.querySelector("#instFinancSai").value
+        //troca o retorno numerico do select pela string correspondente
+        switch (instituicao) {
+          case '1': instituicao = "Banco do Brasil"
+            break;
+          case '2': instituicao = "Santander"
+            break;
+          case '3': instituicao = "Nubank"
+            break;
+          case '4': instituicao = "PicPay"
+            break;
+          case '5': instituicao = "Dinheiro"
+            break;
+        }
+        var dataTrans = document.querySelector("#dataTransSai").value
+        var dataFat = document.querySelector("#dataFatSai").value
+        //divide a data 
+        var partesData = dataFat.split("/");
+        //cria a data no formato correto (de string para date)
+        var data = new Date(partesData[2], partesData[1] - 1, partesData[0])
+        //chama a função que adiciona um mes, passando a data, qte meses, e dia
+        var dataFat = adicionaMes(data, i, partesData[0]).toLocaleDateString("pt-BR")
+        var valor = document.querySelector("#valorSai").value / vezes
+        var descricao = document.querySelector("#descSai").value
+        instTD.append(instituicao)
+        dataTransTD.append(dataTrans)
+        dataFatTD.append(dataFat)
+        valorTD.append(valor)
+        descTD.append(descricao)
+
+        var qte = document.querySelectorAll("#linhaSai").length //encontrar numero de itens
+        var local = document.querySelector("#tabelaSaidas")
+        local.insertBefore(novoTR, local.childNodes[qte + 3])
+      }
+
+      //limpar selecao
+      document.querySelector("#instFinancSai").value = ""
+      document.querySelector("#dataTransSai").value = ""
+      document.querySelector("#dataFatSai").value = ""
+      document.querySelector("#nSai").value = ""
+      document.querySelector("#valorSai").value = ""
+      document.querySelector("#descSai").value = ""
+
+      //Atualizar total
+      atualizaTotalSai()
+
+      //atualiza status
+      atualizaStatus()
+
+      //atualiza resumo
+      atualizarResumo()
+
+      //atualiza o total do resumo
+      atualizaTotResumo()
+    }
+
+    //Funcao que adiciona meses na data
+    function adicionaMes(d, m, dia) {
+
+      var data = new Date(d); //cria a data
+      var mes = data.getMonth(); //pega o mes da data
+      var nova_data = new Date(data.getFullYear(), (m + mes), dia); //monta a nova data
+
+      //alert(n_date);
+      return nova_data;
+    }
+
+    //Funcao que atualiza o total de entradas
+    function atualizaTotalEnt() {
+      document.querySelector("#instFinancEnt").value = ""
+      var lista = document.querySelectorAll("#vlrEnt")
+      var qte = lista.length
+      var totalEnt = parseFloat(0);
+      for (var i = 0; i < qte; i++) {
+        totalEnt = totalEnt + parseFloat(lista[i].innerHTML)
+      }
+      document.querySelector("#totalEntradas").innerHTML = totalEnt
+    }
+
+    //Funcao que atualiza o total de saidas
+    function atualizaTotalSai() {
+      document.querySelector("#instFinancSai").value = ""
+      var lista = document.querySelectorAll("#vlrSai")
+      var qte = lista.length
+      var totalSai = parseFloat(0);
+      for (var i = 0; i < qte; i++) {
+        totalSai = totalSai + parseFloat(lista[i].innerHTML)
+      }
+      document.querySelector("#totalSaidas").innerHTML = totalSai
+    }
+
+    //Funcao que atualiza o status da transação
+    function atualizaStatus() {
+
+      var listaFat = document.querySelectorAll("#fatura")
+      var listaStatus = document.querySelectorAll("#status")
+      var qte = listaFat.length
+
+      for (var i = 0; i < qte; i++) {
+        var dataFatura = listaFat[i].innerHTML
+        var partesData = dataFatura.split("/");
+        var data = new Date(partesData[2], partesData[1] - 1, partesData[0]);
+        if (data < new Date()) {
+          listaStatus[i].innerHTML = "OK"
+        }
+        else {
+          listaStatus[i].innerHTML = "Em aberto"
+        }
+      }
+    }
+
+    //Funcao que atualiza o Resumo
+    function atualizarResumo() {
+
+      var entradas = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      var saidasFaturadas = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      var saidasAbertas = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+      var listaValEnt = document.querySelectorAll("#vlrEnt")
+      var listaInstEnt = document.querySelectorAll("#instEnt")
+      var qte = listaInstEnt.length
+      var listaInstSai = document.querySelectorAll("#instSai")
+      var listaSaidas = document.querySelectorAll("#vlrSai")
+      var listaStatus = document.querySelectorAll("#status")
+
+      //verifica o valor de entradas por banco
+      for (var i = 0; i < qte; i++) {
+        if (listaInstEnt[i].innerHTML == "Banco do Brasil") {
+          entradas[0] = parseFloat(entradas[0]) + parseFloat(listaValEnt[i].innerHTML)
+        }
+        else if (listaInstEnt[i].innerHTML == "Santander") {
+          entradas[1] = parseFloat(entradas[1]) + parseFloat(listaValEnt[i].innerHTML)
+        }
+        else if (listaInstEnt[i].innerHTML == "Nubank") {
+          entradas[2] = parseFloat(entradas[2]) + parseFloat(listaValEnt[i].innerHTML)
+        }
+        else if (listaInstEnt[i].innerHTML == "PicPay") {
+          entradas[3] = parseFloat(entradas[3]) + parseFloat(listaValEnt[i].innerHTML)
+        }
+        else {
+          entradas[4] = parseFloat(entradas[4]) + parseFloat(listaValEnt[i].innerHTML)
+        }
+      }
+
+      //verifica o valor de saidas Ok por banco
+      var qte = listaInstSai.length
+      for (var i = 0; i < qte; i++) {
+        if (listaInstSai[i].innerHTML == "Banco do Brasil" && listaStatus[i].innerHTML == "OK") {
+          saidasFaturadas[0] = parseFloat(saidasFaturadas[0]) + parseFloat(listaSaidas[i].innerHTML)
+        }
+        else if (listaInstSai[i].innerHTML == "Santander" && listaStatus[i].innerHTML == "OK") {
+          saidasFaturadas[1] = parseFloat(saidasFaturadas[1]) + parseFloat(listaSaidas[i].innerHTML)
+        }
+        else if (listaInstSai[i].innerHTML == "Nubank" && listaStatus[i].innerHTML == "OK") {
+          saidasFaturadas[2] = parseFloat(saidasFaturadas[2]) + parseFloat(listaSaidas[i].innerHTML)
+        }
+        else if (listaInstSai[i].innerHTML == "PicPay" && listaStatus[i].innerHTML == "OK") {
+          saidasFaturadas[3] = parseFloat(saidasFaturadas[3]) + parseFloat(listaSaidas[i].innerHTML)
+        }
+        else if (listaInstSai[i].innerHTML == "Dinheiro" && listaStatus[i].innerHTML == "OK") {
+          saidasFaturadas[4] = parseFloat(saidasFaturadas[4]) + parseFloat(listaSaidas[i].innerHTML)
+        }
+      }
+
+      //verifica o valor de saídas Em aberto por banco
+      for (var i = 0; i < qte; i++) {
+        if (listaInstSai[i].innerHTML == "Banco do Brasil" && listaStatus[i].innerHTML == "Em aberto") {
+          saidasAbertas[0] = parseFloat(saidasAbertas[0]) + parseFloat(listaSaidas[i].innerHTML)
+        }
+        else if (listaInstSai[i].innerHTML == "Santander" && listaStatus[i].innerHTML == "Em aberto") {
+          saidasAbertas[1] = parseFloat(saidasAbertas[1]) + parseFloat(listaSaidas[i].innerHTML)
+        }
+        else if (listaInstSai[i].innerHTML == "Nubank" && listaStatus[i].innerHTML == "Em aberto") {
+          saidasAbertas[2] = parseFloat(saidasAbertas[2]) + parseFloat(listaSaidas[i].innerHTML)
+        }
+        else if (listaInstSai[i].innerHTML == "PicPay" && listaStatus[i].innerHTML == "Em aberto") {
+          saidasAbertas[3] = parseFloat(saidasAbertas[3]) + parseFloat(listaSaidas[i].innerHTML)
+        }
+        else if (listaInstSai[i].innerHTML == "Dinheiro" && listaStatus[i].innerHTML == "Em aberto") {
+          saidasAbertas[4] = parseFloat(saidasAbertas[4]) + parseFloat(listaSaidas[i])
+        }
+      }
+
+      var listaTot = document.querySelectorAll("#tot")
+
+      for (var i = 0; i < 5; i++) {
+        listaTot[i].innerHTML = entradas[i] - saidasFaturadas[i]
+      }
+
+      var listaDisp = document.querySelectorAll("#disp")
+
+      for (var i = 0; i < 5; i++) {
+        listaDisp[i].innerHTML = entradas[i] - saidasFaturadas[i] - saidasAbertas[i]
+      }
+    }
+
+    //Funcao que atualiza o total do resumo
+    function atualizaTotResumo() {
+      var listaTot = document.querySelectorAll("#tot")
+      var listaDisp = document.querySelectorAll("#disp")
+      var qte = listaTot.length
+      var totalTot = parseFloat(0);
+      var totalDisp = parseFloat(0);
+      for (var i = 0; i < qte; i++) {
+        totalTot = totalTot + parseFloat(listaTot[i].innerHTML)
+        totalDisp = totalDisp + parseFloat(listaDisp[i].innerHTML)
+      }
+      document.querySelector("#totalResTot").innerHTML = totalTot
+      document.querySelector("#totalResDisp").innerHTML = totalDisp
+    }
+
+    //Funcao responsável por abrir a pagina inicial (mostrar)
+    function abrirPI() {
+      document.querySelector("#navResumo").classList.remove("active")
+      document.querySelector("#navEntradas").classList.remove("active")
+      document.querySelector("#navSaidas").classList.remove("active")
+      document.querySelector("#navContato").classList.remove("active")
+      document.querySelector("#navPI").classList.add("active")
+      document.querySelector("#paginaInicial").classList.remove("collapse")
+      document.querySelector("#resumoFinanc").classList.add("collapse")
+      document.querySelector("#entradas").classList.add("collapse")
+      document.querySelector("#saidas").classList.add("collapse")
+      document.querySelector("#contato").classList.add("collapse")
+    }
+
+    //Funcao responsável por abrir a pagina de resumos (mostrar)
+    function abrirResumo() {
+      document.querySelector("#navPI").classList.remove("active")
+      document.querySelector("#navEntradas").classList.remove("active")
+      document.querySelector("#navSaidas").classList.remove("active")
+      document.querySelector("#navContato").classList.remove("active")
+      document.querySelector("#navResumo").classList.add("active")
+      document.querySelector("#resumoFinanc").classList.remove("collapse")
+      document.querySelector("#paginaInicial").classList.add("collapse")
+      document.querySelector("#entradas").classList.add("collapse")
+      document.querySelector("#saidas").classList.add("collapse")
+      document.querySelector("#contato").classList.add("collapse")
+    }
+
+    //Funcao responsável por abrir a pagina de entradas (mostrar)
+    function abrirEntradas() {
+      document.querySelector("#navPI").classList.remove("active")
+      document.querySelector("#navResumo").classList.remove("active")
+      document.querySelector("#navSaidas").classList.remove("active")
+      document.querySelector("#navContato").classList.remove("active")
+      document.querySelector("#navEntradas").classList.add("active")
+      document.querySelector("#entradas").classList.remove("collapse")
+      document.querySelector("#paginaInicial").classList.add("collapse")
+      document.querySelector("#resumoFinanc").classList.add("collapse")
+      document.querySelector("#saidas").classList.add("collapse")
+      document.querySelector("#contato").classList.add("collapse")
+    }
+
+    //Funcao responsável por abrir a pagina de saidas (mostrar)
+    function abrirSaidas() {
+      document.querySelector("#navPI").classList.remove("active")
+      document.querySelector("#navResumo").classList.remove("active")
+      document.querySelector("#navEntradas").classList.remove("active")
+      document.querySelector("#navContato").classList.remove("active")
+      document.querySelector("#navSaidas").classList.add("active")
+      document.querySelector("#saidas").classList.remove("collapse")
+      document.querySelector("#paginaInicial").classList.add("collapse")
+      document.querySelector("#resumoFinanc").classList.add("collapse")
+      document.querySelector("#entradas").classList.add("collapse")
+      document.querySelector("#contato").classList.add("collapse")
+    }
+
+    //Funcao responsável por abrir a pagina de contato (mostrar)
+    function abrirContato() {
+      document.querySelector("#navPI").classList.remove("active")
+      document.querySelector("#navResumo").classList.remove("active")
+      document.querySelector("#navSaidas").classList.remove("active")
+      document.querySelector("#navEntradas").classList.remove("active")
+      document.querySelector("#navContato").classList.add("active")
+      document.querySelector("#contato").classList.remove("collapse")
+      document.querySelector("#paginaInicial").classList.add("collapse")
+      document.querySelector("#resumoFinanc").classList.add("collapse")
+      document.querySelector("#entradas").classList.add("collapse")
+      document.querySelector("#saidas").classList.add("collapse")
+    }
+
+  </script>
+
+</head>
+
+<body>
+
+  <!--BARRA DE NAVEGAÇÃO-->
+  <div id="barraNav" class="container">
+    <nav class="navbar navbar-expand-sm navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#" style="font-weight: bold;">Controle Pessoal de Finanças</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+          <li id="navContato"><a href="#" onclick="abrirContato()"><span class="glyphicon glyphicon-user"></span>
+              Contato</a></li>
+          <li><a href="index1.html"><span class="glyphicon glyphicon-log-in"></span> Sair</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li id="navPI" class="active"><a href="#paginaInicial" onclick="abrirPI()">Página Inicial</a></li>
+          <li id="navResumo"><a href="#resumoFinanc" onclick="abrirResumo()">Resumo Financeiro</a></li>
+          <li id="navEntradas"><a href="#entradas" onclick="abrirEntradas()">Entradas</a></li>
+          <li id="navSaidas"><a href="#saidas" onclick="abrirSaidas()">Saídas</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <!--PÁGINA INICIAL-->
+  <div class="container" id="paginaInicial" style="margin-bottom: 50px;">
+    <div class="row">
+      <div class="col-sm-5">
+        <h3 style="text-align: left; font-weight:bolder;"> <br><br><br> Página Inicial</h3>
+        <hr style="width:130px; margin-left: 0px;">
+        <br><br><br>
+        <img id="imgs" src="imagens/livros.png" class="img-responsive"
+          alt="Uma pilha de livros e um cofrinho em cima, simbolizando a importancia do estudo para ter uma vida financeira saudável">
+      </div>
+      <div class="col-sm-7">
+
+
+        <div class="texto">
+          <br><br><br><br><br><br><br>
+          <p>Um bom planejamento financeiro pode fazer toda a diferença na sua vida, possibilitando que sonhos se
+            tornem
+            realidade e que trazendo conforto e segurança para seu futuro e de sua família. Este site te ajuda com:
+          </p>
+          <ul>
+            <li>Controle de ganhos</li>
+            <li>Controle de gastos</li>
+            <li>Histórico de transações</li>
+            <li>Saldo disponível</li>
+            <li>Saldo comprometido</li>
+          </ul>
+          <p>Este site foi desenvolvido como requisito para obtenção de nota parcial na disciplina de Progrmação WEB, na
+            Universidade Tecnológica Federal do Paraná (UTFPR-CP). </p>
+          <p>O principal objetivo do desenvolvedor é fornecer uma ferramenta fácil de intuitiva para auxiliar no
+            controle financeiro, fornecendo um histórico de dados que possibilitam o usuário visualizar possíveis
+            atitudes que estão comprometendo seu dinheiro de maneira prejudicial!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--RESUMO FINANCEIRO-->
+  <div class="container collapse" id="resumoFinanc" style="margin-bottom: 50px;">
+    <h3 style="text-align: left; font-weight:bolder ;"> <br><br><br>Resumo Financeiro</h3>
+    <hr style="width:180px; margin-left: 0px;">
+
+    <div class="texto" style="font-weight: bold;">
+      <br>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th style="text-align: left; font-weight: bolder;">Instituição Financeira</th>
+            <th style="text-align: center; font-weight: bolder">Valor Total [R$]</th>
+            <th style="text-align: center; font-weight: bolder">Saldo Disponível [R$]</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="text-align: left;">Banco do Brasil</td>
+            <td id="tot">1750</td>
+            <td id="disp">1500</td>
+          </tr>
+          <tr>
+            <td style="text-align: left;">Santander</td>
+            <td id="tot">500</td>
+            <td id="disp">500</td>
+          </tr>
+          <tr>
+            <td style="text-align: left;">Nubank</td>
+            <td id="tot">2000</td>
+            <td id="disp">-750</td>
+          </tr>
+          <td style="text-align: left;">PicPay</td>
+          <td id="tot">500</td>
+          <td id="disp">500</td>
+          </tr>
+          <tr>
+            <td style="text-align: left;">Dinheiro</td>
+            <td id="tot">200</td>
+            <td id="disp">200</td>
+          </tr>
+          <tr style="font-weight: bolder;">
+            <td style="text-align: left; ">Total</td>
+            <td id="totalResTot"> </td>
+            <td id="totalResDisp"> </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!--ENTRADAS-->
+  <div class="container collapse" id="entradas" style="margin-bottom: 50px;">
+    <h3 style="text-align: left; font-weight:bolder ;"> <br><br><br>Entradas</h3>
+    <hr style="width:90px; margin-left: 0px;">
+
+    <!--Formulário de entrada-->
+    <div class="container texto">
+      <div class="row">
+        <div class="col-xs-4">
+          <br>
+          <label for="instFinancEnt">Inst. Financeira:</label>
+          <select name="instFinancEnt" class="form-control" id="instFinancEnt" style="color: black; width: 160px;">
+            <option value="1">Banco do Brasil</option>
+            <option value="2">Santander</option>
+            <option value="3">Nubank</option>
+            <option value="4">PicPay</option>
+            <option value="5">Dinheiro</option>
+          </select>
+          <br>
+          <label for="dataEnt"> Data transação: </label>
+          <input type="text" name="data" class="form-control date-mask" id="dataEnt" style="color: black; width: 160px;"
+            placeholder="Ex.: 00/00/0000" />
+          <br>
+        </div>
+        <div class="col-xs-5">
+          <br>
+          <label for="valorEnt"> Valor: </label>
+          <input type="text" name="valor" class="form-control" value="" id="valorEnt"
+            style="color: black; width: 100px; " placeholder="Ex.: 100.00" />
+          <br>
+          <label for="descEnt"> Descrição: </label>
+          <input type="text" name="desc" class="form-control" value="" id="descEnt" style="color: black; width: 400px;"
+            placeholder="Ex.: Salário do mês x" />
+          <br>
+        </div>
+        <div class="col-xs-2">
+          <br><br><br>
+          <button type="button" id="btnLancarEnt" class="btn btn-success btn-lg"
+            style="color: black; font-weight: bolder;">Lançar</button>
+        </div>
+      </div>
+    </div>
+
+    <!--Tabela com dados-->
+    <div class="texto" style="font-weight: bold;">
+      <br>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th style="text-align: left; font-weight:bolder">Instituição Financeira</th>
+            <th style="text-align: center; font-weight:bolder">Data</th>
+            <th style="text-align: center; font-weight:bolder">Valor [R$]</th>
+            <th style="text-align: center; font-weight:bolder">Descrição</th>
+          </tr>
+        </thead>
+        <tbody id="tabelaEntradas">
+          <tr id="linhaEnt">
+            <td id="instEnt" style="text-align: left;">Banco do Brasil</td>
+            <td>31/05/2021</td>
+            <td id="vlrEnt">2000</td>
+            <td>Salário mês de maio</td>
+          </tr>
+          <tr id="linhaEnt">
+            <td id="instEnt" style="text-align: left;">Santander</td>
+            <td>31/06/2021</td>
+            <td id="vlrEnt">2000</td>
+            <td>Salário mês de junho</td>
+          </tr>
+          <tr id="linhaEnt">
+            <td id="instEnt" style="text-align: left;">Santander</td>
+            <td>05/07/2021</td>
+            <td id="vlrEnt"> 150</td>
+            <td>Trabalho informal</td>
+          </tr>
+          <tr id="linhaEnt">
+            <td id="instEnt" style="text-align: left;">Dinheiro</td>
+            <td>10/07/2021</td>
+            <td id="vlrEnt">100</td>
+            <td>Ganhei na rifa</td>
+          </tr>
+          <tr id="linhaEnt">
+            <td style="text-align: left; font-weight:bolder">Total</td>
+            <td>--------</td>
+            <td id="totalEntradas">1500</td>
+            <td>--------</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!--SAÍDAS-->
+  <div class="container collapse" id="saidas" style="margin-bottom: 50px;">
+    <h3 style="text-align: left; font-weight:bolder ;"> <br><br><br>Saídas</h3>
+    <hr style="width:70px; margin-left: 0px;">
+
+    <!--Formulário de saída-->
+    <div class="container texto">
+      <div class="row">
+        <div class="col-xs-4">
+          <br>
+          <label for="instFinancSai">Inst. Financeira:</label>
+          <select name="instFinancSai" class="form-control" id="instFinancSai" style="color: black; width: 160px;">
+            <option value="1">Banco do Brasil</option>
+            <option value="2">Santander</option>
+            <option value="3">Nubank</option>
+            <option value="4">PicPay</option>
+            <option value="5">Dinheiro</option>
+          </select>
+          <br>
+          <label for="dataTransSai"> Data transação: </label>
+          <input type="text" name="dataTransSai" class="form-control" value="" id="dataTransSai"
+            style="color: black; width: 160px;" placeholder="Ex.: 00/00/0000" />
+          <br>
+          <label for="dataFatSai"> Data fatura: </label>
+          <input type="text" name="dataFatSai" class="form-control" value="" id="dataFatSai"
+            style="color: black; width: 160px;" placeholder="Ex.: 00/00/0000" />
+          <br>
+        </div>
+        <div class="col-xs-5">
+          <br>
+          <label for="valorSai"> Valor: </label>
+          <input type="text" name="valor" class="form-control" value="" id="valorSai"
+            style="color: black; width: 120px; " placeholder="Ex.: 100.00" />
+          <br>
+          <label for="nVezes"> Núm. vezes: </label>
+          <input type="text" name="vezes" class="form-control" value="" id="nSai" style="color: black; width: 120px;"
+            placeholder="Ex.: 6" />
+          <br>
+          <label for="descSai"> Descrição: </label>
+          <input type="text" name="desc" class="form-control" value="" id="descSai" style="color: black; width: 400px;"
+            placeholder="Ex.: Compra de material escolar" />
+          <br>
+        </div>
+        <div class="col-xs-2">
+          <br><br><br>
+          <button type="button" id="btnLancarSai" class="btn btn-success btn-lg"
+            style="color: black; font-weight: bolder;">Lançar</button>
+        </div>
+      </div>
+    </div>
+
+    <!--Tabela com dados-->
+    <div class="texto" style="font-weight: bold;">
+      <br>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th style="text-align: left; font-weight:bolder">Instituição Financeira</th>
+            <th style="text-align: center; font-weight:bolder">Data Transação</th>
+            <th style="text-align: center; font-weight:bolder">Data Fatura</th>
+            <th style="text-align: center; font-weight:bolder">Valor [R$]</th>
+            <th style="text-align: center; font-weight:bolder">Descrição</th>
+            <th style="text-align: center; font-weight:bolder">Status</th>
+          </tr>
+        </thead>
+        <tbody id="tabelaSaidas">
+          <tr id="linhaSai">
+            <td id="instSai" style="text-align: left;">Banco do Brasil</td>
+            <td>10/06/2021</td>
+            <td id="fatura">10/06/2021</td>
+            <td id="vlrSai">600</td>
+            <td>Mantimentos para casa</td>
+            <td id="status">OK</td>
+          </tr>
+          <tr id="linhaSai">
+            <td id="instSai" style="text-align: left;">Santander</td>
+            <td>15/06/2021</td>
+            <td id="fatura">15/06/2021</td>
+            <td id="vlrSai">250</td>
+            <td>Manutenção do carro</td>
+            <td id="status">OK</td>
+          </tr>
+          <tr id="linhaSai">
+            <td id="instSai" style="text-align: left;">Santander</td>
+            <td>20/06/2021</td>
+            <td id="fatura">28/06/2021</td>
+            <td id="vlrSai"> 200</td>
+            <td>Combustível para carro</td>
+            <td id="status">OK</td>
+          </tr>
+          <tr id="linhaSai">
+            <td id="instSai" style="text-align: left;">Santander</td>
+            <td>10/07/2021</td>
+            <td id="fatura">28/07/2021</td>
+            <td id="vlrSai">800</td>
+            <td>Mantimentos para casa</td>
+            <td id="status">OK</td>
+
+          </tr>
+          <tr id="linhaSai">
+            <td style="text-align: left; font-weight:bolder">Total</td>
+            <td>--------</td>
+            <td>--------</td>
+            <td id="totalSaidas">1500</td>
+            <td>--------</td>
+            <td>--------</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!--CONTATO-->
+  <div class="container collapse" id="contato" style="margin-bottom: 50px;">
+    <h3 style="text-align: center; font-weight:bolder; font-size: 15pt;"> <br><br><br>Contato</h3>
+    <hr>
+
+    <div class="texto">
+      <p>Fique a vontade para entrar em contato conosco por meio das informações de contato abaixo ou enviando uma
+        mensagem usando o formulário. </p>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-sm-6 texto">
+        <h3>Fale Conosco</h3>
+        Cornélio Procópio - PR <br>
+        Brasil <br>
+        felipedaniel@alunos.utfpr.edu.br <br>
+        (15) 99630-2580
+
+      </div>
+      <div class="col-sm-6 texto">
+        <h3>Envie uma mensagem para nós</h3>
+        <div class="form-group">
+          <label for="usr">Nome:</label>
+          <input type="text" class="form-control" id="usr" placeholder="Insira aqui o seu nome" />
+        </div>
+        <div class="form-group">
+          <label for="email">E-mail:</label>
+          <input type="text" class="form-control" id="email" placeholder="Ex.: algumacoisa@gmail.com " />
+        </div>
+        <div class="form-group">
+          <label for="comentario">Mensagem:</label>
+          <textarea class="form-control" rows="5" id="comentario"
+            placeholder="Deixe aqui o seu comentário..."></textarea>
+        </div>
+        <button type="button" class="btn btn-primary btn-lg">Enviar</button>
+
+      </div>
+    </div>
+  </div>
+
+  <!--RODAPÉ-->
+  <div class="container">
+    <div class="ctt" id="ctt">
+      <hr>
+      <p style="text-align: center;"><span class="glyphicon glyphicon-map-marker"></span>Cornélio Procópio - PR, Brasil</p>
+      <p style="text-align: center;"><span class="glyphicon glyphicon-phone"></span>Celular: (15) 99630-2580</p>
+      <p style="text-align: center;"><span class="glyphicon glyphicon-envelope"></span>Email: felipedaniel@alunos.utfpr.edu.br</p>
+      <br><br>
+    </div>
+  </div>
+
+</body>
+
+</html>

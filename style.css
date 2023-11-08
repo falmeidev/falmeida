@@ -1,0 +1,67 @@
+
+@media only screen and (max-width: 600px) {
+    #barraNav {display: none;}}
+
+.carregar{
+    animation: is-rotating 1s infinite;
+    border: 6px solid #e5e5e5;
+    border-radius: 50%;
+    border-top-color: #51d4db ;
+    height: 30px;
+    width: 30px;
+}
+
+@keyframes is-rotating{
+    to{
+        transform: rotate(1turn) ;
+    }
+}
+
+td{
+    text-align: center;
+}
+
+.texto{
+    color:rgb(51, 48, 48);
+    font-size: 14pt;
+    font-weight: bold;
+}
+
+.ctt{
+    color:rgb(182, 182, 182);
+    margin-left: 0;
+}
+
+p {
+    margin: 0;
+    text-indent: 2.5ch;
+    text-align: justify;
+    color:rgb(51, 48, 48);
+}
+
+body {
+    background-color: rgb(91, 151, 118);
+}
+
+#tituloPage1 {
+    color: rgb(51, 48, 48);
+    text-align: center;
+    font-weight: bold;
+}
+
+h2 {
+    color: rgb(51, 48, 48);
+    font-weight: bolder;
+}
+
+h3 {
+    color: rgb(51, 48, 48);
+    font-size: 14pt;
+    text-align: justify;
+    font-weight: bolder;
+}
+
+#btnEntrar, #btnRegistrar{
+    width: 150px;
+    height: 50%;
+}
