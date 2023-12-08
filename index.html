@@ -28,9 +28,9 @@
       document.querySelector("#aboutme").classList.remove("collapse");
       document.querySelector("#projects").classList.add("collapse");
       document.querySelector("#contact").classList.add("collapse");
-      document.querySelector("#l1").classList.add("active");
-      document.querySelector("#l2").classList.remove("active");
-      document.querySelector("#l3").classList.remove("active");
+      document.querySelector("#l1").classList.add("activeSelection");
+      document.querySelector("#l2").classList.remove("activeSelection");
+      document.querySelector("#l3").classList.remove("activeSelection");
 
     }
 
@@ -38,18 +38,18 @@
       document.querySelector("#aboutme").classList.add("collapse");
       document.querySelector("#projects").classList.remove("collapse");
       document.querySelector("#contact").classList.add("collapse");
-      document.querySelector("#l1").classList.remove("active");
-      document.querySelector("#l2").classList.add("active");
-      document.querySelector("#l3").classList.remove("active");
+      document.querySelector("#l1").classList.remove("activeSelection");
+      document.querySelector("#l2").classList.add("activeSelection");
+      document.querySelector("#l3").classList.remove("activeSelection");
     }
 
     function openContact(){
       document.querySelector("#aboutme").classList.add("collapse");
       document.querySelector("#projects").classList.add("collapse");
       document.querySelector("#contact").classList.remove("collapse");
-      document.querySelector("#l1").classList.remove("active");
-      document.querySelector("#l2").classList.remove("active");
-      document.querySelector("#l3").classList.add("active");
+      document.querySelector("#l1").classList.remove("activeSelection");
+      document.querySelector("#l2").classList.remove("activeSelection");
+      document.querySelector("#l3").classList.add("activeSelection");
     }
 
   </script>
@@ -61,7 +61,7 @@
   <!--Navigation bar-->
   <header>
     <nav style="opacity: 0.7;">
-      <a class="logo">Felipe Daniel Ferreira de Almeida</a>
+      <a class="logo" onclick="openAboutMe()">Felipe Daniel Ferreira de Almeida</a>
       <div class="mobile-menu">
         <div class="line1"></div>
         <div class="line2"></div>
@@ -189,7 +189,7 @@
   <script>
 
     //highlight the section on the nav bar
-    document.querySelector("#l1").classList.add("active");
+    document.querySelector("#l1").classList.add("activeSelection");
 
     // create the list with the programming languages that I work with
     let progLangs = ['SQL','C','C++','JavaScript'];

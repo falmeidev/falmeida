@@ -29,6 +29,7 @@ a {
     background: #23232e;
     height: 8vh;
     cursor: pointer;
+    overflow: hidden;
   }
   
   .nav-list {
@@ -58,6 +59,7 @@ a {
   @media (max-width: 999px) {
     body {
       overflow-x: hidden;
+      overflow: hidden;
     }
     .nav-list {
       position: absolute;
@@ -77,6 +79,7 @@ a {
       margin-left: 0;
       text-indent: 0%;
       opacity: 0;
+      background-color: aqua;
     }
     .mobile-menu {
       display: block;
@@ -110,7 +113,7 @@ a {
     transform: rotate(45deg) translate(-5px, -7px);
   }
 
-.active {
+.activeSelection {
   font-size: 18px;
   font-weight: bold;
   }
