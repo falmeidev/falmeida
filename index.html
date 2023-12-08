@@ -30,29 +30,26 @@
 
 <body>
 
-  <!--BARRA DE NAVEGAÇÃO-->
-  <div id="barraNav" class="container">
-    <nav class="navbar navbar-expand-sm navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#" style="font-weight: bold;">Felipe Daniel Ferreira de Almeida</a>
-        </div>
-        <ul class="nav navbar-nav navbar-right">
-          <li id="navContato"><a href="#" onclick="abrirContato()"><span class="glyphicon glyphicon-user"></span>
-              Contato</a></li>
-          <li><a href="index1.html"><span class="glyphicon glyphicon-log-in"></span> Sair</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li id="navPI" class="active"><a href="#aboutme" onclick="abrirPI()">About Me</a></li>
-          <li id="navResumo"><a href="#resumoFinanc" onclick="abrirResumo()">Resumo Financeiro</a></li>
-          <li id="navEntradas"><a href="#entradas" onclick="abrirEntradas()">Entradas</a></li>
-          <li id="navSaidas"><a href="#saidas" onclick="abrirSaidas()">Saídas</a></li>
-        </ul>
+  <!--Navigation bar-->
+  <header>
+    <nav>
+      <a class="logo">Felipe Daniel Ferreira de Almeida</a>
+      <div class="mobile-menu">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
       </div>
+      <ul class="nav-list">
+        <li><a href="#"> About me</a></li>
+        <li><a href="#"> Projects</a></li>
+        <li><a href="#"> Contact</a></li>
+      </ul>
     </nav>
-  </div>
+  </header>
+  <script src="mobile-navbar.js"></script>
+ 
 
-  <!--PÁGINA INICIAL-->
+  <!--About Me Page-->
   <div class="container" id="aboutme" style="margin-bottom: 50px;">
     <div class="row">
       <div class="col-sm-4">
@@ -64,7 +61,7 @@
            and making the world better through data analysis 🚀</p>
         <p class="profile" style="max-width:75%; margin-top: 8px;">Data Engineer, Data Scientist</p>
         <p class="profile" style="max-width:75%;">Programmer Python</p>
-        <p class="profile" style="max-width:75%; "> and <b><span id="progLang"></span><span id="dots"></span></b></p>
+        <p class="profile" style="max-width:75%; "> and <b><span id="progLang" style="font-size: 18px"></span><span id="dots"></span></b></p>
       </div>
       <div class="col-sm-8">
         <div class="text">
@@ -81,7 +78,7 @@
             Manager at P&G, working on automation and IT/OT projects. Advanced proficiency in Python, with
             experience in ETL, application development and process automation, as well as a strong command of SQL,
             Power BI and machine learning algorithms. Effective communication, excellent teamwork and fluency in
-            English
+            English.
           </p>
 
           <h1>
@@ -163,12 +160,10 @@
 
   </script>
 
- 
-
   <!--RODAPÉ-->
-  <div class="container">
+  <div class="container" style="margin-top: 0px;">
     <div class="ctt" id="ctt">
-      <hr>
+      <hr style="margin-top: 0px;">
       <p style="text-align: center;"><span class="glyphicon glyphicon-map-marker"></span> Itatiba - SP, Brasil</p>
       <p style="text-align: center;"><span class="glyphicon glyphicon-phone"></span> Phone number: +55 15 99630-2580</p>
       <p style="text-align: center;"><span class="glyphicon glyphicon-envelope"></span> E-mail: felipedaniel1910@hotmail.com</p>
