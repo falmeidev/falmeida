@@ -79,7 +79,7 @@ a {
       margin-left: 0;
       text-indent: 0%;
       opacity: 0;
-      background-color: aqua;
+      text-align: left;
     }
     .mobile-menu {
       display: block;
