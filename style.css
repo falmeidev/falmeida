@@ -8,7 +8,7 @@ a {
   a:hover {
     opacity: 0.8;
     text-decoration: none;
-    color: rgb(255, 0, 128);
+    color: rgb(255, 0, 221);
   }
   
   .logo {
@@ -182,13 +182,13 @@ h1 {
 }
 
 h2 {
-    color: rgb(51, 48, 48);
+    color: rgb(15, 14, 14);
     font-weight: bolder;
 }
 
 h3 {
-    color: rgb(51, 48, 48);
-    font-size: 14pt;
+    color: rgb(15, 14, 14);
+    font-size: 20pt;
     text-align: justify;
     font-weight: bolder;
   }
