@@ -24,6 +24,34 @@
       document.querySelector("#btnLancarSai").addEventListener("click", lancarSaida);
     }
 
+    function openAboutMe(){
+      document.querySelector("#aboutme").classList.remove("collapse");
+      document.querySelector("#projects").classList.add("collapse");
+      document.querySelector("#contact").classList.add("collapse");
+      document.querySelector("#l1").classList.add("active");
+      document.querySelector("#l2").classList.remove("active");
+      document.querySelector("#l3").classList.remove("active");
+
+    }
+
+    function openProjects(){
+      document.querySelector("#aboutme").classList.add("collapse");
+      document.querySelector("#projects").classList.remove("collapse");
+      document.querySelector("#contact").classList.add("collapse");
+      document.querySelector("#l1").classList.remove("active");
+      document.querySelector("#l2").classList.add("active");
+      document.querySelector("#l3").classList.remove("active");
+    }
+
+    function openContact(){
+      document.querySelector("#aboutme").classList.add("collapse");
+      document.querySelector("#projects").classList.add("collapse");
+      document.querySelector("#contact").classList.remove("collapse");
+      document.querySelector("#l1").classList.remove("active");
+      document.querySelector("#l2").classList.remove("active");
+      document.querySelector("#l3").classList.add("active");
+    }
+
   </script>
 
 </head>
@@ -32,7 +60,7 @@
 
   <!--Navigation bar-->
   <header>
-    <nav>
+    <nav style="opacity: 0.7;">
       <a class="logo">Felipe Daniel Ferreira de Almeida</a>
       <div class="mobile-menu">
         <div class="line1"></div>
@@ -40,9 +68,9 @@
         <div class="line3"></div>
       </div>
       <ul class="nav-list">
-        <li><a href="#aboutme"> About me</a></li>
-        <li><a href="#"> Projects</a></li>
-        <li><a href="#"> Contact</a></li>
+        <li id="l1"><a onclick="openAboutMe()"> About me</a></li>
+        <li id="l2"><a onclick="openProjects()"> Projects</a></li>
+        <li id="l3"><a onclick="openContact()"> Contact</a></li>
       </ul>
     </nav>
   </header>
@@ -113,7 +141,55 @@
     </div>
   </div>
 
+  <!--Projects Page-->
+  <div class="container collapse" id="projects" style="margin-bottom: 50px;">
+    Olá Felipe!
+  </div>
+
+  <!--Contact Page-->
+  <div class="container collapse" id="contact" style="margin-bottom: 50px;">
+    <h3 style="text-align: center; font-weight:bolder; font-size: 15pt;"> <br><br><br>Contato</h3>
+    <hr>
+
+    <div class="texto">
+      <p>Fique a vontade para entrar em contato conosco por meio das informações de contato abaixo ou enviando uma
+        mensagem usando o formulário. </p>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-sm-6 texto">
+        <h3>Fale Conosco</h3>
+        Cornélio Procópio - PR <br>
+        Brasil <br>
+        felipedaniel@alunos.utfpr.edu.br <br>
+        (15) 99630-2580
+
+      </div>
+      <div class="col-sm-6 texto">
+        <h3>Envie uma mensagem para nós</h3>
+        <div class="form-group">
+          <label for="usr">Nome:</label>
+          <input type="text" class="form-control" id="usr" placeholder="Insira aqui o seu nome" />
+        </div>
+        <div class="form-group">
+          <label for="email">E-mail:</label>
+          <input type="text" class="form-control" id="email" placeholder="Ex.: algumacoisa@gmail.com " />
+        </div>
+        <div class="form-group">
+          <label for="comentario">Mensagem:</label>
+          <textarea class="form-control" rows="5" id="comentario"
+            placeholder="Deixe aqui o seu comentário..."></textarea>
+        </div>
+        <button type="button" class="btn btn-primary btn-lg">Enviar</button>
+
+      </div>
+    </div>
+  </div>
+
   <script>
+
+    //highlight the section on the nav bar
+    document.querySelector("#l1").classList.add("active");
 
     // create the list with the programming languages that I work with
     let progLangs = ['SQL','C','C++','JavaScript'];
