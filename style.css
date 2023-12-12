@@ -30,7 +30,7 @@ nav {
   background: #ffffff;
   height: 8vh;
   cursor: pointer;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .nav-list {
@@ -52,14 +52,14 @@ nav {
 .mobile-menu div {
   width: 32px;
   height: 2px;
-  background: #fff;
+  background: #000000;
   margin: 8px;
   transition: 0.3s;
 }
 
-@media (max-width: 999px) {
+@media (max-width: 600px) {
   body {
-    overflow-x: hidden;
+    /*overflow-x: hidden;*/
   }
   .nav-list {
     position: absolute;
