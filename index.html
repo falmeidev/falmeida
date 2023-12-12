@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <title>FelipeDaniel</title>
 
-  <script>
+  <!--<script>
 
     function openAboutMe(){
       document.querySelector("#aboutme").classList.remove("collapse");
@@ -42,7 +42,7 @@
       document.querySelector("#l3").classList.add("activeSelection");
     }
 
-  </script>
+  //</script>-->
 
 </head>
 
@@ -50,36 +50,46 @@
 
   <!--Navigation bar-->
   <header>
-    <nav style="opacity: 0.7;">
-      <a class="logo" onclick="openAboutMe()">Felipe Daniel Ferreira de Almeida</a>
+    <nav>
+      <a style="color: #fff;" class="logo" onclick="openAboutMe()">FD</a>
       <div class="mobile-menu">
         <div class="line1"></div>
         <div class="line2"></div>
         <div class="line3"></div>
       </div>
       <ul class="nav-list">
-        <li id="l1"><a onclick="openAboutMe()"> About me</a></li>
-        <li id="l2"><a onclick="openProjects()"> Projects</a></li>
-        <li id="l3"><a onclick="openContact()"> Contact</a></li>
+        <li id="l1"><a href="#aboutme"> About me</a></li>
+        <li id="l2"><a href="#background"> Background</a></li>
+        <li id="l2"><a href="#projects"> Projects</a></li>
+        <li style="margin-right: 120px;" id="l3"><a href="#contact"> Contact</a></li>
       </ul>
     </nav>
   </header>
   <script src="mobile-navbar.js"></script>
  
+   <!--Initial Page-->
+  <div style="background: url('images/img4.png'); background-size: cover;">
+    <br><br><br><br>
+    <div  style="margin-top: 100px; margin-bottom: 100px;">
+      <p style="text-indent: 0px; color: #fff; text-align: center; font-size: 62px; font-weight: bolder; font-style: italic; font-family: Palatino, URW Palladio L, serif">Felipe Daniel Ferreira de Almeida</p>
+      <hr style="margin-left: 100px; margin-right: 100px; border-top: 5px solid #ffffff; ">
+      <p style="text-align: center; font-size: 30px; margin-left: 150px; margin-right: 150px;">I'm a Control and Automation Engineer who loves coding, building systems, and making the world better through data analysis  🚀</p>
+      <p style="text-align: center; font-size: 20px">Programmer <b style="color: rgb(6, 47, 82);">Python</b> and</p>
+      <p style="text-align: center;"><b><span id="progLang" style="font-size: 20px"></span><span id="dots"></span></b></p>
+    </div>
+    <br><br><br><br>
+    <p style=" margin-right: 150px; text-align: right; font-size: 20px; text-decoration: underline; color: blue;">Contact</p>
+    <br>
+  </div>
 
   <!--About Me Page-->
-  <div class="container" id="aboutme" style="margin-bottom: 50px;">
-    <div class="row">
+  <div class="container" id="aboutme" style="margin-bottom: 50px; margin-bottom: 200px; ">
+    <div class="row" style="margin-top: 50px;">
       <div class="col-sm-4">
         <br><br><br><br>
         <img id="imgs" src="images/mypicture.png" style="max-width:75%" class="img-responsive; img-rounded"
           alt="My profile">
         </br>
-        <p class="profile" style="max-width:75%; margin-top: 8px;">I'm a Control and Automation Engineer who loves coding, building systems, 
-           and making the world better through data analysis 🚀</p>
-        <p class="profile" style="max-width:75%; margin-top: 8px;">Data Engineer, Data Scientist</p>
-        <p class="profile" style="max-width:75%;">Programmer Python</p>
-        <p class="profile" style="max-width:75%; "> and <b><span id="progLang" style="font-size: 18px"></span><span id="dots"></span></b></p>
       </div>
       <div class="col-sm-8">
         <div>
@@ -98,7 +108,7 @@
             Power BI and machine learning algorithms. Effective communication, excellent teamwork and fluency in
             English.
           </p>
-
+<!--
           <h1>
             Education
           </h1>
@@ -125,14 +135,47 @@
             <li>
               Electrical Technical Course
             </li>
-          </ul>
+          </ul>-->
         </div>
       </div>
     </div>
   </div>
 
+  <!--Education-->
+  <div style="background: url('images/bgEducation.png'); background-size: cover;" id="background">
+    <div class="row">
+      <h1 style="color: #fff; text-align: center; margin-top: 50px;">Background</h1>
+      <div class="col-sm-3" style="text-align: center; margin-left: 100px;">
+        <img style="margin-top: 180px;" src="images/logo_utf.png" height="50px" width="120" >
+        <p style="color:#fff; font-size: 24px; text-align: center; margin-top: 20px; text-indent: 0px; font-family: Palatino, URW Palladio L, serif">
+          <b>Federal Technological University of Parana</b>
+        </p>
+        <hr style="margin-top: 5px; margin-bottom: 3px;">
+          <p style="color:#fff; font-size: 21px; text-align: center; text-indent: 0px; font-family: Palatino, URW Palladio L, serif">Control and Automation Engineering <br> 2017 - 2023</p>
+      </div>
+
+      <div class="col-sm-3" style="text-align: center; margin-left: 50px;">
+        <img style="margin-top: 150px;" src="images/logo_cps.png" height="90px" width="110" >
+        <p style="color:#fff;font-size: 24px; text-align: center; margin-top: 10px; text-indent: 0px; font-family: Palatino, URW Palladio L, serif">
+          <b>Paula Souza State Center for Technological Education</b>
+        </p>
+        <hr style="margin-top: 5px; margin-bottom: 3px;">
+          <p style="color:#fff;font-size: 21px; text-align: center; text-indent: 0px; font-family: Palatino, URW Palladio L, serif">Middle-Level Technical Specialist in Project Management <br> 2021 - 2021</p>
+      </div>
+
+      <div class="col-sm-3" style="text-align: center; margin-left: 50px; margin-bottom: 300px;">
+        <img style="margin-top: 150px;" src="images/logo_cps.png" height="90px" width="110" >
+        <p style="color:#fff;font-size: 24px; text-align: center; margin-top: 10px; text-indent: 0px; font-family: Palatino, URW Palladio L, serif">
+          <b>Paula Souza State Center for Technological Education</b>
+        </p>
+        <hr style="margin-top: 5px; margin-bottom: 3px;">
+          <p style="color:#fff;font-size: 21px; text-align: center; text-indent: 0px; font-family: Palatino, URW Palladio L, serif">Electrical Technical Course <br> 2015 - 2016</p>
+      </div>
+    </div>
+  </div>
+
   <!--Projects Page-->
-  <div class="container collapse" id="projects" style="margin-bottom: 50px;">
+  <div id="projects" style="margin-bottom: 50px; background: url('images/bgProjects.png'); background-size: cover;">
 
     <h2>Data Engineer, Data Science and Data Analysis</h2>
 
@@ -173,7 +216,7 @@
   </div>
 
   <!--Contact Page-->
-  <div class="container collapse" id="contact" style="margin-bottom: 50px;">
+  <div class="container" id="contact" style="margin-bottom: 50px;">
     <h3 style="text-align: center; font-weight:bolder; font-size: 15pt;"> <br><br><br>Contact</h3>
     <hr>
 

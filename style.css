@@ -1,13 +1,15 @@
 a {
-  color: #fff;
+  color: #141313;
   text-decoration: none;
   transition: 0.3s;
+  font-family: Palatino, URW Palladio L, serif;
+  font-weight: 600;
 }
 
 a:hover {
-  opacity: 0.8;
+  opacity:1;
   text-decoration: none;
-  color: rgb(255, 0, 221);
+  color: rgb(155,72,25);
 }
 
 .logo {
@@ -22,10 +24,10 @@ a:hover {
 
 nav {
   display: flex;
-  justify-content: space-around;
+  justify-content: end;
   align-items: center;
   font-family: arial, sans-serif;
-  background: #23232e;
+  background: #ffffff;
   height: 8vh;
   cursor: pointer;
   overflow: hidden;
@@ -58,7 +60,6 @@ nav {
 @media (max-width: 999px) {
   body {
     overflow-x: hidden;
-    overflow: hidden;
   }
   .nav-list {
     position: absolute;
@@ -67,7 +68,7 @@ nav {
     width: 30vw;
     /*height: 92vh;*/
     height: 30vh;
-    background: #23232e;
+    background: #ffffff;
     flex-direction: column;
     align-items: left;
     justify-content: space-around;
@@ -161,11 +162,7 @@ li {
 
 body {
   /*background-color: rgb(91, 151, 118);
-  background-color: rgba(5, 19, 10, 0.342);*/
-  background: url('images/img4.png');
-  background-size: cover;
-
-  
+  background-color: rgba(5, 19, 10, 0.342);*/  
 }
 
 #tituloPage1 {
@@ -176,7 +173,7 @@ body {
 
 h1 {
   color: rgb(15, 14, 14);
-  font-family:arial, sans-serif;
+  font-family: Palatino, URW Palladio L, serif;
   font-weight: bold;
 }
 
