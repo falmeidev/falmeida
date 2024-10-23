@@ -10,46 +10,15 @@
   <!--Using external CSS file-->
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <title>FelipeDaniel</title>
-
-  <!--<script>
-
-    function openAboutMe(){
-      document.querySelector("#aboutme").classList.remove("collapse");
-      document.querySelector("#projects").classList.add("collapse");
-      document.querySelector("#contact").classList.add("collapse");
-      document.querySelector("#l1").classList.add("activeSelection");
-      document.querySelector("#l2").classList.remove("activeSelection");
-      document.querySelector("#l3").classList.remove("activeSelection");
-
-    }
-
-    function openProjects(){
-      document.querySelector("#aboutme").classList.add("collapse");
-      document.querySelector("#projects").classList.remove("collapse");
-      document.querySelector("#contact").classList.add("collapse");
-      document.querySelector("#l1").classList.remove("activeSelection");
-      document.querySelector("#l2").classList.add("activeSelection");
-      document.querySelector("#l3").classList.remove("activeSelection");
-    }
-
-    function openContact(){
-      document.querySelector("#aboutme").classList.add("collapse");
-      document.querySelector("#projects").classList.add("collapse");
-      document.querySelector("#contact").classList.remove("collapse");
-      document.querySelector("#l1").classList.remove("activeSelection");
-      document.querySelector("#l2").classList.remove("activeSelection");
-      document.querySelector("#l3").classList.add("activeSelection");
-    }
-
-  //</script>-->
+  <title>FAlmeida</title>
 
 </head>
 
 <body style="overflow-x: hidden;">
-
+  <div class='container-fluid'>
   <!--Navigation bar-->
   <header>
+    <div class='container-fluid'>
     <nav>
       <a style="color: #fff;" class="logo" onclick="openAboutMe()">FD</a>
       <div class="mobile-menu">
@@ -58,12 +27,13 @@
         <div class="line3"></div>
       </div>
       <ul class="nav-list">
-        <li id="l1"><a href="#aboutme"> About me</a></li>
-        <li id="l2"><a href="#background"> Background</a></li>
-        <li id="l2"><a href="#projects"> Projects</a></li>
-        <li style="margin-right: 120px;" id="l3"><a href="#contact"> Contact</a></li>
+        <li id="l1"><a style="font-family: Helvetica, Arial, sans-serif;font-size: 20px;" href="#aboutme"> About</a></li>
+        <li id="l2"><a style="font-family: Helvetica, Arial, sans-serif;font-size: 20px;" href="#background"> Background</a></li>
+        <li id="l2"><a style="font-family: Helvetica, Arial, sans-serif;font-size: 20px;" href="#projects"> Projects</a></li>
+        <li style="margin-right: 120px;" id="l3"><a style="font-family: Helvetica, Arial, sans-serif;;font-size: 20px;" href="#contact"> Contact</a></li>
       </ul>
     </nav>
+  </div>
   </header>
   <script src="mobile-navbar.js"></script>
 
@@ -75,9 +45,8 @@
         style="text-indent: 0px; color: #fff; text-align: center; font-size: 62px; font-weight: bolder; font-style: italic; font-family: Palatino, URW Palladio L, serif">
         Felipe Daniel Ferreira de Almeida</p>
       <hr style="margin-left: 100px; margin-right: 100px; border-top: 5px solid #ffffff; ">
-      <p style="text-align: center; font-size: 30px; margin-left: 150px; margin-right: 150px;">I'm a Control and
-        Automation Engineer who loves coding, building systems, and making the world better through data analysis 🚀</p>
-      <p style="text-align: center; font-size: 20px">Programmer <b style="color: rgb(6, 47, 82);">Python</b> and</p>
+      <p style="text-align: center; font-size: 30px; margin-left: 150px; margin-right: 150px; font-family: Helvetica, Arial, sans-serif;">I'm a Data Engineer who loves coding, building systems, and making the world better through data analysis 🚀</p>
+      <p style="text-align: center; font-size: 20px; font-family: Helvetica, Arial, sans-serif;">Programmer <b style="color: rgb(6, 47, 82);">Python</b> and</p>
       <p style="text-align: center;"><b><span id="progLang" style="font-size: 20px"></span><span id="dots"></span></b>
       </p>
     </div>
@@ -86,6 +55,8 @@
       Contact</p>
     <br>
   </div>
+
+
 
   <!--About Me Page-->
   <div id="aboutme" style="background-color: rgb(252, 245, 231); background-size: cover; ">
@@ -102,19 +73,20 @@
           <h1>
             Profile
           </h1>
-          <p style="margin-bottom: 200px; color: rgb(155,72,25); font-weight:500;">Graduated in Control and Automation
-            Engineering from the Federal Technological University of Paraná
-            (UTFPR) and a technical course in Electrical Engineering, with an emphasis on automation and industrial
-            control. Two years of experience in managing people and projects within the academic environment,
-            participating in an extension project in robotics. Professional journey started as an apprentice in
-            Industrial
-            Production at Klingele Paper & Packaging in Nova Campina, SP, followed by an R&D internship at Procter &
-            Gamble, focusing on engineering, analysis and data science. After the internship, hired as Technology
-            Project
-            Manager at P&G, working on automation and IT/OT projects. Advanced proficiency in Python, with
-            experience in ETL, application development and process automation, as well as a strong command of SQL,
-            Power BI and machine learning algorithms. Effective communication, excellent teamwork and fluency in
-            English.
+          <p style="color: rgb(155,72,25); font-weight:500;font-family: Helvetica, Arial, sans-serif;;font-size: 25px;">
+            Experienced Data Engineer driven by applying technology to solve real-world problems. My expertise includes: </p>:
+            <ul >
+              <li style="color: rgb(155,72,25); font-weight:500;font-family: Helvetica, Arial, sans-serif;font-size: 22px;">Transforming business challenges into innovative tech solutions, collaborating across diverse teams.</li>
+              <li style="color: rgb(155,72,25); font-weight:500;font-family: Helvetica, Arial, sans-serif;font-size: 22px;">Managing projects with a focus on technology product development, ensuring timely delivery and alignment with business goals.</li>
+              <li style="color: rgb(155,72,25); font-weight:500;font-family: Helvetica, Arial, sans-serif;font-size: 22px;">Building robust data pipelines with Python and Spark, optimized for handling large-scale data.</li>
+              <li style="color: rgb(155,72,25); font-weight:500;font-family: Helvetica, Arial, sans-serif;font-size: 22px;">Deep knowledge of cloud services and Spark clusters, with hands-on experience in Azure, Google Cloud, and AWS.</li>
+              <li style="color: rgb(155,72,25); font-weight:500;font-family: Helvetica, Arial, sans-serif;font-size: 22px;">Deploying ETL models and data pipelines using Airflow, Docker, and cloud services.</li>
+              <li style="color: rgb(155,72,25); font-weight:500;font-family: Helvetica, Arial, sans-serif;font-size: 22px;">Strong Python skills for creating scalable systems and data infrastructures.</li>
+              <li style="color: rgb(155,72,25); font-weight:500;font-family: Helvetica, Arial, sans-serif;font-size: 22px;">Proficient in data visualization and statistics to enhance data services.</li>
+              <li style="color: rgb(155,72,25); font-weight:500;font-family: Helvetica, Arial, sans-serif;font-size: 22px;">Documenting and versioning projects with Git/GitHub.</li>
+              <li style="color: rgb(155,72,25); font-weight:500;font-family: Helvetica, Arial, sans-serif;font-size: 22px;">Bachelor in Control and Automation Engineering.</li>
+            </ul>
+          <p style="margin-bottom: 200px; color: rgb(155,72,25); font-weight:500;font-family: Helvetica, Arial, sans-serif;;font-size: 25px;"> Driven by curiosity, adaptability, and a relentless focus on connecting data to real-world scenarios, I am always eager to learn and tackle new challenges. I embrace new opportunities with enthusiasm and excel at quickly mastering new technologies.
           </p>
         </div>
       </div>
@@ -124,42 +96,44 @@
   <!--Education-->
   <div style="background: url('images/bgEducation.png'); background-size: cover;" id="background">
     <div class="row">
-      <h1 style="color: #fff; text-align: center; margin-top: 70px;">Background</h1>
-      <div class="col-sm-3" style="text-align: center; margin-left: 100px;">
+      <h1 style="color: #fff; text-align: center; margin-top: 70px; ">Background</h1>
+
+      <div class="col-sm-3" style="text-align: center; margin-left: 8vw; margin-bottom: 300px;">
+        <img style="margin-top: 150px;" src="images/logo_cps.png" height="90px" width="110">
+        <p
+          style="color:#fff;font-size: 24px; text-align: center; margin-top: 10px; text-indent: 0px; font-family: Helvetica, Arial, sans-serif">
+          <b>Paula Souza State Center for Technological Education</b>
+        </p>
+        <hr style="margin-top: 5px; margin-bottom: 3px;">
+        <p
+          style="color:#fff;font-size: 21px; text-align: center; text-indent: 0px; font-family: Helvetica, Arial, sans-serif">
+          Electrical Technical Course <br> 2015 - 2016</p>
+      </div>
+
+      <div class="col-sm-3" style="text-align: center;margin-left: 50px;">
+        <img style="margin-top: 150px;" src="images/logo_cps.png" height="90px" width="110">
+        <p
+          style="color:#fff;font-size: 24px; text-align: center; margin-top: 10px; text-indent: 0px; font-family: Helvetica, Arial, sans-serif">
+          <b>Paula Souza State Center for Technological Education</b>
+        </p>
+        <hr style="margin-top: 5px; margin-bottom: 3px;">
+        <p
+          style="color:#fff;font-size: 21px; text-align: center; text-indent: 0px; font-family: Helvetica, Arial, sans-serif">
+          Middle-Level Technical Specialist in Project Management <br> 2021 - 2021</p>
+      </div>
+
+      <div class="col-sm-3" style="text-align: center;margin-left: 50px;">
         <img style="margin-top: 180px;" src="images/logo_utf.png" height="50px" width="120">
         <p
-          style="color:#fff; font-size: 24px; text-align: center; margin-top: 20px; text-indent: 0px; font-family: Palatino, URW Palladio L, serif">
+          style="color:#fff; font-size: 24px; text-align: center; margin-top: 20px; text-indent: 0px; font-family: Helvetica, Arial, sans-serif">
           <b>Federal Technological University of Parana</b>
         </p>
         <hr style="margin-top: 5px; margin-bottom: 3px;">
         <p
-          style="color:#fff; font-size: 21px; text-align: center; text-indent: 0px; font-family: Palatino, URW Palladio L, serif">
+          style="color:#fff; font-size: 21px; text-align: center; text-indent: 0px; font-family: Helvetica, Arial, sans-serif">
           Control and Automation Engineering <br> 2017 - 2023</p>
       </div>
 
-      <div class="col-sm-3" style="text-align: center; margin-left: 50px;">
-        <img style="margin-top: 150px;" src="images/logo_cps.png" height="90px" width="110">
-        <p
-          style="color:#fff;font-size: 24px; text-align: center; margin-top: 10px; text-indent: 0px; font-family: Palatino, URW Palladio L, serif">
-          <b>Paula Souza State Center for Technological Education</b>
-        </p>
-        <hr style="margin-top: 5px; margin-bottom: 3px;">
-        <p
-          style="color:#fff;font-size: 21px; text-align: center; text-indent: 0px; font-family: Palatino, URW Palladio L, serif">
-          Middle-Level Technical Specialist in Project Management <br> 2021 - 2021</p>
-      </div>
-
-      <div class="col-sm-3" style="text-align: center; margin-left: 50px; margin-bottom: 300px;">
-        <img style="margin-top: 150px;" src="images/logo_cps.png" height="90px" width="110">
-        <p
-          style="color:#fff;font-size: 24px; text-align: center; margin-top: 10px; text-indent: 0px; font-family: Palatino, URW Palladio L, serif">
-          <b>Paula Souza State Center for Technological Education</b>
-        </p>
-        <hr style="margin-top: 5px; margin-bottom: 3px;">
-        <p
-          style="color:#fff;font-size: 21px; text-align: center; text-indent: 0px; font-family: Palatino, URW Palladio L, serif">
-          Electrical Technical Course <br> 2015 - 2016</p>
-      </div>
     </div>
   </div>
 
@@ -269,31 +243,31 @@
   <div id="contact" style="background: url('images/bgContact.png'); background-size: cover;">
     <div>
       <br><br><br>
-      <h1 style="color: #ffffff; text-align: center; ">Contact</h1>
+      <h1 style="color: #ffffff; text-align: center; font-family: Helvetica, Arial, sans-serif;">Contact</h1>
       <hr>
 
       <div>
-        <p style="color: #fff; text-align: center; font-size: 20px;">Feel free to contact me using the contact
+        <p style="color: #fff; text-align: center; font-size: 20px; font-family: Helvetica, Arial, sans-serif;">Feel free to contact me using the contact
           information below 😃 </p>
       </div>
       <hr>
       <div class="row">
 
         <div style="text-align: left; margin-left: 100px; margin-bottom: 120px;">
-          <h3 style="color: white;font-family: Palatino, URW Palladio L, serif;">Contact me</h3>
+          <h3 style="color: white;font-family: Helvetica, Arial, sans-serif;">Contact me</h3>
           <br>
-            <p ><a style="color: white;" href="mailto:felipedaniel1910@hotmail.com" target="_blank"><img src="images/outlook_icon.png" height="40px" width="40px" style="margin-right: 20px;"> felipedaniel1910@hotmail.com </a> <br></p>
-            <p style="color: white; margin-top: 20px;"><a style="color: white;" href="https://wa.me/5515996302580" target="_blank"><img src="images/wapp_icon.png" height="40px" width="40px" style="margin-right: 20px;">+55 15 99630-2580</a></p>
+            <p ><a style="font-family: Helvetica, Arial, sans-serif; color: white;" href="mailto:felipedaniel1910@hotmail.com" target="_blank"><img src="images/outlook_icon.png" height="40px" width="40px" style="margin-right: 20px;"> felipedaniel1910@hotmail.com </a> <br></p>
+            <p style=" font-family: Helvetica, Arial, sans-serif; color: white; margin-top: 20px;"><a style="color: white;" href="https://wa.me/5515996302580" target="_blank"><img src="images/wapp_icon.png" height="40px" width="40px" style=" font-family: Helvetica, Arial, sans-serif;margin-right: 20px;">+55 15 99630-2580</a></p>
           <br>
 
-          <h3 style="color: white; font-family: Palatino, URW Palladio L, serif;">Connect me on Linkedin and check my GitHub</h3>
-          <p><a style="color: rgb(10, 102, 194); font-size: 25px;" href="https://www.linkedin.com/in/felipedaniel1910/"
+          <h3 style="color: white; font-family: Helvetica, Arial, sans-serif;">Connect me on Linkedin and check my GitHub</h3>
+          <p><a style="font-family: Helvetica, Arial, sans-serif; color: rgb(10, 102, 194); font-size: 25px;" href="https://www.linkedin.com/in/falmeidev/"
             target="_blank"><img src="images/linkedin_icon.png" height="40px" width="40px" style="margin-right: 20px;">Linkedin</a></p>
-          <p style="margin-top: 20px;"><a style="color: rgb(238, 229, 229); font-size: 25px;" href="https://github.com/felipedaniel1910"
-            target="_blank"><img src="images/github_icon.png" height="40px" width="40px" style="margin-right: 20px;">GitHub</a></p>
+          <p style="font-family: Helvetica, Arial, sans-serif; margin-top: 20px;"><a style="color: rgb(238, 229, 229); font-size: 25px;" href="https://github.com/falmeidev"
+            target="_blank"><img src="images/github_icon.png" height="40px" width="40px" style=" font-family: Helvetica, Arial, sans-serif; margin-right: 20px;">GitHub</a></p>
 
-          <h3 style="color: white;font-family: Palatino, URW Palladio L, serif;">Download my updated CV</h3>
-          <p style="color: rgb(255, 255, 255);"><a style="color:  rgb(180,4,9); text-decoration: underline;" href="CV/FelipeDaniel_EN.pdf" target="_blank">CV in English</a> and <a style="color: rgb(1,146,63); text-decoration: underline;" href="CV/FelipeDaniel_PT.pdf" target="_blank">CV in Portuguese</a></p>
+          <h3 style="color: white;font-family: Helvetica, Arial, sans-serif;margin-top: 40px;">Download my updated CV</h3>
+          <p style=" font-family: Helvetica, Arial, sans-serif;, color: rgb(255, 255, 255);"><a style="color:  rgb(180,4,9); text-decoration: underline;" href="CV/FelipeDaniel_EN.pdf" target="_blank">CV in English</a> and <a style="color: rgb(1,146,63); text-decoration: underline;" href="CV/FelipeDaniel_PT.pdf" target="_blank">CV in Portuguese</a></p>
         </div>
 
       </div>
@@ -307,7 +281,7 @@
     //document.querySelector("#l1").classList.add("activeSelection");
 
     // create the list with the programming languages that I work with
-    let progLangs = ['SQL', 'C', 'C++', 'JavaScript'];
+    let progLangs = ['SQL', 'R', 'C', 'C++', 'JavaScript'];
 
     // indice to iter the list
     let indice = 0;
@@ -356,18 +330,19 @@
   <div style="background-color: rgb(255, 255, 255)">
     <div>
     <hr>
-    <p style="text-align: center;"><span class="glyphicon glyphicon-map-marker"></span> Itatiba - SP, Brazil</p>
+    <p style="text-align: center;"><span class="glyphicon glyphicon-map-marker"></span> São Paulo - Brazil</p>
     <p style="text-align: center;"><span class="glyphicon glyphicon-phone"></span> Phone number: +55 15 99630-2580</p>
     <p style="text-align: center;"><span class="glyphicon glyphicon-envelope"></span> E-mail:
       felipedaniel1910@hotmail.com</p>
     <p style="text-align: center;">Please check my: <a
         style="color: rgb(10, 102, 194); font-size: 20px; font-weight: bold;"
-        href="https://www.linkedin.com/in/felipedaniel1910/" target="_blank">Linkedin</a>
+        href="https://www.linkedin.com/in/falmeidev/" target="_blank">Linkedin</a>
       <span> and </span> <a style="color: black; font-size: 20px; font-weight: bold;"
-        href="https://github.com/felipedaniel1910" target="_blank">GitHub</a>
+        href="https://github.com/falmeidev" target="_blank">GitHub</a>
     </p>
 
     <br><br>
+  </div>
   </div>
   </div>
 

@@ -6,6 +6,13 @@ a {
   font-weight: 600;
 }
 
+li {
+  color: rgb(155,72,25); 
+  font-weight:500;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 25px;
+}
+
 a:hover {
   opacity:1;
   text-decoration: none;
@@ -16,7 +23,7 @@ a:hover {
   font-size: 24px;
   /*text-transform: uppercase;*/
   letter-spacing: 4px;
-  font-family:arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;;
   font-size: 20px;
   cursor: pointer;
   text-decoration: none;
@@ -65,9 +72,9 @@ nav {
     position: absolute;
     top: 8vh;
     right: 0;
-    width: 30vw;
+    width: 40vw;
     /*height: 92vh;*/
-    height: 30vh;
+    height: 40vh;
     background: #ffffff;
     flex-direction: column;
     align-items: left;
@@ -160,11 +167,6 @@ li {
   font-size: 16px;
 }
 
-body {
-  /*background-color: rgb(91, 151, 118);
-  background-color: rgba(5, 19, 10, 0.342);*/  
-}
-
 #tituloPage1 {
   color: rgb(51, 48, 48);
   text-align: center;
@@ -173,7 +175,7 @@ body {
 
 h1 {
   color: rgb(155,72,25);
-  font-family: Palatino, URW Palladio L, serif;
+  font-family: Helvetica, Arial, sans-serif;;
   font-weight: bold;
 }
 
